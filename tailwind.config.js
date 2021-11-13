@@ -6,12 +6,17 @@ module.exports = {
   theme: {
     color: {
       gray: colors.blueGray,
-      purple: colors.violet
+      purple: colors.violet,
+      blue: colors.sky
     },
     extend: {},
   },
   variants: {
-    extend: {},
+    extend: {
+      tranformation: ['group-hover'],
+      translation: ['group-hover'],
+      scale: ['group-hover'],
+    },
   },
   plugins: [],
 }
