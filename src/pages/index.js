@@ -39,17 +39,19 @@ const dActive = () => dRef.current.toggleFromLanding()
       </div>
 
 
-//storygame
+/*storygame*/
    <Page ref={sgRef} tW="bg-blue-300" side="left">
      <h1 className = "container w-64 mx-auto mt-6 text-white text-center shadow-sm rounded-sm bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">scene play and storygames</h1>
    </Page>
 
-//script
+
+/*script*/
    <Page ref={wRef} tW="bg-green-500" side="right">
     <h1 className="container w-64 mx-auto mt-6 text-white shadow-sm text-center rounded-sm bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500" >scripts and other writings</h1>
   </Page>
 
-//website
+
+/*website*/
   <Page ref={dRef} tW="bg-red-500" side="bottom">
    <h1 className="container w-64 mx-auto mt-6 text-white shadow-sm text-center rounded-sm bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500" >web development</h1>
  </Page>
