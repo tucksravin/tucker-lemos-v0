@@ -9,7 +9,7 @@ module.exports = {
       purple: colors.violet,
       blue: colors.sky
     },
-    extend: {},
+    extend: {    },
   },
   variants: {
     extend: {

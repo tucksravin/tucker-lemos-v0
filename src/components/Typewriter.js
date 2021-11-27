@@ -1,17 +1,44 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect} from 'react'
 import "../styles/tailwind.css"
+//import "../styles/animation.css"
+import  styled  from '@emotion/styled'
+import  { keyframes }  from '@emotion/react'
+
+const Typewriter = props => {
+
+  //animation keyframes
+  const borderBlink = keyframes`
+    from{
+      border-right: .1em solid transparent;
+    }
+    to{
+      border-right: .1em solid white;
+    }
+    `
 
 
-export default function Typewriter(props) {
+  //css
+  const Div = styled.div`
+    width: max-content;
+    margin: auto;
+    animation: ${borderBlink} 1s infinite steps(2);
+  `
 
+
+
+  //state
   const [tick, nextTick] = useState(0)
   const [delta, setDelta] = useState(1000)
   const [text, setText] = useState("")
   const input = props.text
 
+
+
+
+
+
   useEffect(()=> {
       console.log("mounted")
-      console.log(text)
     },
     []
   )
@@ -26,23 +53,37 @@ export default function Typewriter(props) {
 
 
   useEffect(()=> {
-
-    if(tick<input.length-1){
+    if(input!=='')
+    {
+    if(tick===1)  {
       setText(input.substring(0, tick))
-      setDelta( 200 - Math.random() * 100 )
+      setDelta( 3000 )
     }
-    else if(tick==input.length-1){
+
+    else if(tick<input.length-1){
+      setText(input.substring(0, tick))
+      setDelta( 190 - Math.random() * 40 )
+
+      if(/\s/.test(input.charAt(tick)))
+        setDelta(delta=>delta+15)
+    }
+    else if(tick===input.length-1){
       setText(input)
-      setDelta(2200)
+      setDelta(3000)
       console.log('pause')
     }
-    else if(tick==input.length||tick==input.length+1){
+    else if(tick<=input.length+2&&tick<=input.length*2){
       setText(input.substring(0, input.length*2-tick))
-      setDelta(300)
+      setDelta(150)
     }
+    else if(tick<=input.length+10&&tick<=input.length*2){
+      setText(input.substring(0, input.length*2-tick))
+      setDelta(80)
+      }
+
     else if(tick<=input.length*2){
       setText(input.substring(0, input.length*2-tick))
-      setDelta(120)
+      setDelta(45)
       }
 
 
@@ -54,7 +95,7 @@ export default function Typewriter(props) {
       }
 
 
-    if(tick<=input.length*2){
+    if(tick<=input.length*2&&tick>0){
 
       console.log("call again, tick = "+tick +" \n and delta = "+delta)
       setTimeout(
@@ -64,47 +105,18 @@ export default function Typewriter(props) {
     }
 
 
-    },
+    }
+  },
     [tick]
   )
 
 
 
 
-/*
-
-  const ticker = function(){
-    console.log(input.length)
-    nextTick(tick=>tick+1)
-
-    if(tick<input.length){
-      setText(input.substring(0, tick))
-      setDelta( 200 - Math.random() * 100 )
-    }
-    else if(tick<=input.length*2){
-      setText(input.substring(0, input.length*2-tick))
-      setDelta(500)
-      }
-
-    if(tick!==input.length*2){
-
-      console.log("call again, tick = "+tick)
-      setTimeout(
-        ()=>ticker(),
-        delta
-      )
-    }
-    else {
-      clearTimeout()
-    }
-
-  }
-  */
-
-
-
 
   return(
-    <h2 className={"text-center "+props.tW}> {text} </h2>
+    <Div className={props.tW + " text-3xl"} id="typewriter"> {text} </Div>
   )
 }
+
+export default Typewriter
