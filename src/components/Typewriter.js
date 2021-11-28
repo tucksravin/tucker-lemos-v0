@@ -1,30 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import "../styles/tailwind.css"
-//import "../styles/animation.css"
+import "../styles/typewriterCursor.css"
 import  styled  from '@emotion/styled'
 import  { keyframes }  from '@emotion/react'
 
 const Typewriter = props => {
-
-  //animation keyframes
-  const borderBlink = keyframes`
-    from{
-      border-right: .1em solid transparent;
-    }
-    to{
-      border-right: .1em solid white;
-    }
-    `
-
-
-  //css
-  const Div = styled.div`
-    width: max-content;
-    margin: auto;
-    animation: ${borderBlink} 1s infinite steps(2);
-  `
-
-
 
   //state
   const [tick, nextTick] = useState(0)
@@ -44,10 +24,11 @@ const Typewriter = props => {
   )
 
   useEffect(()=> {
-    if(props.active){
-      console.log("start ticker")
-      nextTick(tick=>tick+1)
-    }
+
+    if(props.active!==0)
+        {
+        nextTick(tick=>tick+1)
+      }
   },
 [props.active])
 
@@ -85,6 +66,9 @@ const Typewriter = props => {
       setText(input.substring(0, input.length*2-tick))
       setDelta(45)
       }
+    else {
+      nextTick(0)
+    }
 
 
       //clears all timeouts in the case of overlap from random
@@ -115,7 +99,7 @@ const Typewriter = props => {
 
 
   return(
-    <Div className={props.tW + " text-3xl"} id="typewriter"> {text} </Div>
+    <div className={props.tW + " 2xl"} id="typewriter"> {text} </div>
   )
 }
 

@@ -1,0 +1,16 @@
+@keyframes borderBlink {
+  from{
+    border-right: .1em solid transparent;
+  }
+  to{
+    border-right: .1em solid white;
+  }
+}
+
+
+
+#typewriter{
+  width: max-content;
+  margin: auto;
+  animation: borderBlink 1s infinite steps(2);
+}

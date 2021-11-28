@@ -5,7 +5,6 @@ import { styled } from 'emotion/styled'
 const TEMPLATE =  props => {
 
     const Div = styled.div`
-
       /*
         write any css here
       */
