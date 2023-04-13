@@ -1,13 +1,17 @@
 import React from 'react'
 import "../styles/tailwind.css"
-
+import { styled } from 'emotion/styled'
 
 const CursorSplit = props => {
+
+  const Div = styled.div`
+    
+  `
 
 
 
     return (
-      <div className = {props.tW+" animation"}> {props.children} </div>
+      <Div className = {props.tW+" animation"}> {props.children} </Div>
     )
 
 }

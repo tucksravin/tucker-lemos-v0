@@ -18,7 +18,7 @@ const sgActive = () => sgRef.current.toggleFromLanding()
 const wRef = useRef()
 const wActive = () => {
   wRef.current.toggleFromLanding()
-  startTyping(typing=>typing+1)
+  startTyping(typing=>1)
 }
 
 const dRef = useRef()
@@ -59,7 +59,7 @@ const dActive = () => dRef.current.toggleFromLanding()
 
 
    <Page ref={wRef} tW="bg-gray-900" side="right">
-      <Typewriter tW="text-white text-4xl" text="I should be written and deleted." active={typing}/>
+      <Typewriter tW="text-white text-4xl" active={typing} clear="true" > I am a writer. </Typewriter>
    </Page>
 
 
